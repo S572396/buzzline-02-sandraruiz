@@ -1,0 +1,31 @@
+2025-01-25 21:20:56.722 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-25 21:20:56.737 | INFO     | __main__:main:103 - START producer.
+2025-01-25 21:20:56.738 | INFO     | utils.utils_producer:get_zookeeper_address:57 - Zookeeper address: localhost:2181
+2025-01-25 21:20:56.752 | INFO     | utils.utils_producer:check_zookeeper_service_is_ready:79 - Zookeeper is ready at localhost:2181.
+2025-01-25 21:20:56.753 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-25 21:20:58.787 | ERROR    | utils.utils_producer:check_kafka_service_is_ready:102 - Error checking Kafka: NoBrokersAvailable
+2025-01-25 21:20:58.789 | ERROR    | utils.utils_producer:verify_services:121 - Kafka broker is not ready. Please check your Kafka setup. Exiting...
+2025-01-25 21:21:19.484 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-25 21:21:19.488 | INFO     | __main__:main:78 - START consumer.
+2025-01-25 21:21:19.489 | INFO     | __main__:get_kafka_topic:35 - Kafka topic: buzzline
+2025-01-25 21:21:19.490 | INFO     | __main__:get_kafka_consumer_group_id:42 - Kafka consumer group id: default_group
+2025-01-25 21:21:19.490 | INFO     | __main__:main:83 - Consumer: Topic 'buzzline' and group 'default_group'...
+2025-01-25 21:21:19.491 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-25 21:21:19.491 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='buzzline' and group ID='default_group'.
+2025-01-25 21:21:21.513 | ERROR    | utils.utils_consumer:create_kafka_consumer:60 - Error creating Kafka consumer: NoBrokersAvailable
+2025-01-25 21:22:22.726 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-25 21:22:22.730 | INFO     | __main__:main:78 - START consumer.
+2025-01-25 21:22:22.731 | INFO     | __main__:get_kafka_topic:35 - Kafka topic: buzzline
+2025-01-25 21:22:22.731 | INFO     | __main__:get_kafka_consumer_group_id:42 - Kafka consumer group id: default_group
+2025-01-25 21:22:22.732 | INFO     | __main__:main:83 - Consumer: Topic 'buzzline' and group 'default_group'...
+2025-01-25 21:22:22.732 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-25 21:22:22.733 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='buzzline' and group ID='default_group'.
+2025-01-25 21:22:24.770 | ERROR    | utils.utils_consumer:create_kafka_consumer:60 - Error creating Kafka consumer: NoBrokersAvailable
+2025-01-25 21:29:46.538 | INFO     | utils.utils_logger:<module>:38 - Logging to file: logs\project_log.log
+2025-01-25 21:29:46.543 | INFO     | __main__:main:78 - START consumer.
+2025-01-25 21:29:46.543 | INFO     | __main__:get_kafka_topic:35 - Kafka topic: buzzline
+2025-01-25 21:29:46.543 | INFO     | __main__:get_kafka_consumer_group_id:42 - Kafka consumer group id: default_group
+2025-01-25 21:29:46.544 | INFO     | __main__:main:83 - Consumer: Topic 'buzzline' and group 'default_group'...
+2025-01-25 21:29:46.544 | INFO     | utils.utils_producer:get_kafka_broker_address:50 - Kafka broker address: localhost:9092
+2025-01-25 21:29:46.545 | INFO     | utils.utils_consumer:create_kafka_consumer:44 - Creating Kafka consumer. Topic='buzzline' and group ID='default_group'.
+2025-01-25 21:29:48.580 | ERROR    | utils.utils_consumer:create_kafka_consumer:60 - Error creating Kafka consumer: NoBrokersAvailable
