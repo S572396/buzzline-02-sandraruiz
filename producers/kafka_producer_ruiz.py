@@ -1,11 +1,10 @@
 import os
-
 import sys
-print(sys.path)
-
 import time
 import random
+
 from dotenv import load_dotenv
+
 from utils.utils_producer import (
     verify_services,
     create_kafka_producer,
@@ -13,7 +12,6 @@ from utils.utils_producer import (
 )
 from utils.utils_logger import logger
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 
 
 
@@ -58,7 +56,7 @@ def generate_messages(producer, topic, interval_secs):
         "Kafka is a work in progress.",
         "Streaming data is challenging.",
         "This buzz message is great!",
-        "Have a great day!",
+        "Have a wonderful day!",
     ]
     try:
         while True:

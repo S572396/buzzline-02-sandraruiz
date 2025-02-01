@@ -1,15 +1,10 @@
-"""
-kafka_consumer_ruiz.py
-
-Consume messages from a Kafka topic and process them.
-"""
-
 #####################################
 # Import Modules
 #####################################
 
 # Import packages from Python Standard Library
 import os
+from collections import Counter
 
 # Import external packages
 from dotenv import load_dotenv
@@ -28,13 +23,11 @@ load_dotenv()
 # Getter Functions for .env Variables
 #####################################
 
-
 def get_kafka_topic() -> str:
     """Fetch Kafka topic from environment or use default."""
     topic = os.getenv("KAFKA_TOPIC", "unknown_topic")
     logger.info(f"Kafka topic: {topic}")
     return topic
-
 
 def get_kafka_consumer_group_id() -> int:
     """Fetch Kafka consumer group id from environment or use default."""
@@ -42,35 +35,45 @@ def get_kafka_consumer_group_id() -> int:
     logger.info(f"Kafka consumer group id: {group_id}")
     return group_id
 
-
 #####################################
-# Define a function to process a single message
-# #####################################
+# Define a function to process messages
+#####################################
 
+word_counter = Counter()
+ALERT_THRESHOLD = 5  # Set threshold for triggering alerts
+ALERT_WORD = "CRITICAL"  # Define word that triggers alerts
 
 def process_message(message: str) -> None:
     """
     Process a single message.
 
-    For now, this function simply logs the message.
-    You can extend it to perform other tasks, like counting words
-    or storing data in a database.
-
+    - Logs the message.
+    - Tracks word frequency.
+    - Triggers an alert if a word exceeds the threshold.
+    
     Args:
         message (str): The message to process.
     """
     logger.info(f"Processing message: {message}")
-
+    
+    # Word frequency tracking
+    words = message.split()
+    word_counter.update(words)
+    logger.info(f"Updated word count: {dict(word_counter)}")
+    
+    # Custom alert logic
+    if word_counter[ALERT_WORD] >= ALERT_THRESHOLD:
+        print(f"ALERT: The word '{ALERT_WORD}' has appeared {word_counter[ALERT_WORD]} times!")
+        logger.warning(f"ALERT: The word '{ALERT_WORD}' has appeared {word_counter[ALERT_WORD]} times!")
+    
     # An alert for special conditions
     if "Kafka!" in message:
         print(f"ALERT: The special message was found! \n{message}")
         logger.warning(f"ALERT: The special message was found! \n{message}")
 
-
 #####################################
 # Define main function for this module
 #####################################
-
 
 def main() -> None:
     """
@@ -90,7 +93,7 @@ def main() -> None:
     # Create the Kafka consumer using the helpful utility function.
     consumer = create_kafka_consumer(topic, group_id)
 
-     # Poll and process messages
+    # Poll and process messages
     logger.info(f"Polling messages from topic '{topic}'...")
     try:
         for message in consumer:
@@ -106,7 +109,6 @@ def main() -> None:
         logger.info(f"Kafka consumer for topic '{topic}' closed.")
 
     logger.info(f"END consumer for topic '{topic}' and group '{group_id}'.")
-
 
 #####################################
 # Conditional Execution
